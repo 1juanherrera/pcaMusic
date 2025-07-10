@@ -35,3 +35,27 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import '@ionic/angular/css/palettes/dark.system.css';
+
+/* Aplicar variables de tema globalmente */
+ion-app {
+  background: var(--background-color);
+  color: var(--text-color-primary);
+}
+
+/* Transiciones suaves para cambios de tema */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Estilos base para tarjetas */
+ion-card {
+  --background: var(--card-background);
+  --color: var(--text-color-primary);
+  border: 1px solid var(--border-color);
+}
+
+/* Estilos base para contenido */
+ion-content {
+  --background: var(--background-color);
+  --color: var(--text-color-primary);
+}

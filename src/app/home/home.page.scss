@@ -1,33 +1,92 @@
-#container {
+// Estilos para el swiper
+swiper-container {
+  width: 100%;
+  height: 400px;
+}
+
+swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // El gradiente se aplica dinámicamente desde el HTML
+}
+
+.slide-content {
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  padding: 20px;
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+.slide-content img {
+  width: 100%;
+  max-width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin: 20px 0;
+  box-shadow: 0 4px 15px var(--shadow-color);
 }
 
-#container p {
+.slide-content h2 {
+  font-size: 28px;
+  margin: 0 0 15px 0;
+  color: var(--text-color-primary);
+  font-weight: bold;
+}
+
+.slide-content p {
   font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+  color: var(--text-color-primary);
+  line-height: 1.5;
 }
 
-#container a {
-  text-decoration: none;
-}
 
-.button {
-  background: #3880ff;
-  color: #fff;
-  border-radius: 8px;
+.welcome-card {
+  margin: 16px;
+  background: var(--card-background);
+  color: gray;
+  box-shadow: 0 4px 12px var(--shadow-color);
+
+  ion-card-header {
+    color: var(--text-color-secondary);
+    font-size: 14px;
+    margin-bottom: 8px;
+
+    ion-card-title {
+      color: var(--text-color-primary);
+      font-weight: bold;
+    }
+  }
+  
+  .theme-info {
+    margin-top: 19px;
+    padding: 12px;
+    background: var(--background-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background: var(--background-button);
+    
+    p {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      color: var(--text-color-secondary);
+      
+      ion-icon {
+        margin-right: 8px;
+      }
+    }
+  }
+      ion-button {
+        background: var(--background-button);
+        --color: var(--text-color-primary);
+        border-radius: 8px;
+        text-align: center;
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+
+        ion-icon {
+        color: var(--text-color-primary);
+      }
+  }  
 }
