@@ -77,7 +77,7 @@ swiper-slide {
     }
   }
       ion-button {
-        background: var(--background-button);
+        --background: var(--background-button);
         --color: var(--text-color-primary);
         border-radius: 8px;
         text-align: center;
@@ -89,4 +89,9 @@ swiper-slide {
         color: var(--text-color-primary);
       }
   }  
+}
+
+.ion-intro {
+  --color: var(--text-color-primary);
+  --background: var(--background-button);
 }

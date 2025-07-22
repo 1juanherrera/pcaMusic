@@ -2,6 +2,7 @@ import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { StorageService } from '../services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +33,7 @@ export class HomePage implements OnInit {
     }
   ];
 
-  constructor(private storageService: StorageService) { }
+  constructor(private storageService: StorageService, private router: Router) { }
 
   async ngOnInit() {
     await this.loadStorageData();
@@ -76,6 +77,11 @@ export class HomePage implements OnInit {
       this.updateTheme();
       console.log('Loaded dark mode preference:', this.darkMode);
     }
+  }
+
+  goIntro() {
+    console.log('Navigating to intro');
+    this.router.navigateByUrl('/intro', { replaceUrl: true });
   }
 }
 

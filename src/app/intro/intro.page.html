@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Intro</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleTheme()" fill="clear">
+        {{isDarkMode() ? '☀️' : '🌑'}}
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="intro-content ion-padding">
+  <div class="intro-container">
+    <ion-title size="large" class="intro-title">Soy intro</ion-title>
+    <p class="intro-desc">
+      Esta página solo debería aparecer la primera vez que abres la app.<br>
+      Al pulsar el botón, se guarda en el storage que ya viste la intro.<br>
+      Si vuelves a abrir la app, deberías ir directo al home.
+    </p>
+    <ion-button expand="block" class="intro-btn" (click)="goBack()">Volver al home</ion-button>
+  </div>
+</ion-content>
