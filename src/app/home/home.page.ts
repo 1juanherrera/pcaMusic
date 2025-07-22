@@ -1,6 +1,7 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-home',
@@ -26,31 +27,28 @@ export class HomePage implements OnInit {
     },
     {
       title: 'Rock',
-      image: 'https://acortar.link/qLjFzs',
+      image: 'https://acortar.link/RPjEzF',
       description: 'Disfruta de la energía del rock.'
     }
   ];
 
-  constructor() { }
+  constructor(private storageService: StorageService) { }
 
-  ngOnInit() {
-    // Detectar tema del sistema al iniciar
-    this.darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    this.updateTheme();
+  async ngOnInit() {
+    await this.loadStorageData();
   }
 
-  // Alternar tema
-  toggleTheme() {
+  async toggleTheme() {
     this.darkMode = !this.darkMode;
     this.updateTheme();
+    await this.storageService.set('darkMode', this.darkMode);
+    console.log('Dark mode preference saved:', this.darkMode);
   }
-
-  // Verificar si está en modo oscuro
+ 
   isDarkMode(): boolean {
     return this.darkMode;
   }
 
-  // Aplicar el tema
   private updateTheme() {
     const body = document.body;
     if (this.darkMode) {
@@ -62,7 +60,6 @@ export class HomePage implements OnInit {
     }
   }
 
-  // Función para obtener el gradiente según el índice
   getGradient(index: number): string {
     const gradients = [
       'var(--gradient-classical)',
@@ -70,6 +67,15 @@ export class HomePage implements OnInit {
       'var(--gradient-rock)'
     ];
     return gradients[index % gradients.length];
+  }
+
+  async loadStorageData() {
+    const savedTheme  = await this.storageService.get('darkMode');
+    if (savedTheme !== null) {
+      this.darkMode = savedTheme;
+      this.updateTheme();
+      console.log('Loaded dark mode preference:', this.darkMode);
+    }
   }
 }
 
