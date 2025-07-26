@@ -3,13 +3,16 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { StorageService } from '../services/storage.service';
 import { Router } from '@angular/router';
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { featherSun, featherMoon } from '@ng-icons/feather-icons';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonicModule, CommonModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  imports: [IonicModule, CommonModule, NgIcon],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  viewProviders: [provideIcons({ featherSun, featherMoon })]
 })
 export class HomePage implements OnInit {
 
@@ -18,25 +21,36 @@ export class HomePage implements OnInit {
   genres = [
     {
       title: 'Música Clásica',
-      image: 'https://acortar.link/PmidZf',
+      image: './assets/images/clasica.png',
       description: 'Disfruta de la elegancia de la música clásica.'
     },
     {
       title: 'Jazz',
-      image: 'https://acortar.link/BDKPT4',
+      image: './assets/images/jazz.png',
       description: 'Sumérgete en el ritmo del jazz.'
     },
     {
       title: 'Rock',
-      image: 'https://acortar.link/RPjEzF',
+      image: './assets/images/rock.png',
       description: 'Disfruta de la energía del rock.'
+    },
+    {
+      title: 'Pop',
+      image: './assets/images/pop.png',
+      description: 'Vibra con los éxitos del pop internacional.'
     }
   ];
+
+  async resetIntro() {
+    await this.storageService.remove('introSeen');
+    this.router.navigateByUrl('/intro', { replaceUrl: true });
+  }
 
   constructor(private storageService: StorageService, private router: Router) { }
 
   async ngOnInit() {
     await this.loadStorageData();
+    this.simularCargaDatos();
   }
 
   async toggleTheme() {
@@ -82,6 +96,19 @@ export class HomePage implements OnInit {
   goIntro() {
     console.log('Navigating to intro');
     this.router.navigateByUrl('/intro', { replaceUrl: true });
+  }
+
+  async simularCargaDatos() { 
+    const data = await this.obtenerDatosSimulados(); 
+    console.log('Datos simulados cargados:', data);
+  }
+
+  obtenerDatosSimulados() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(['Rock', 'Pop', 'Jazz', 'Clásica']);
+      }, 1500);
+    });
   }
 }
 

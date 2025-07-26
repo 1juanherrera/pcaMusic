@@ -10,17 +10,15 @@
     <!-- Tarjeta de bienvenida con estilos adaptativos -->
   <ion-card class="welcome-card">
     <ion-card-header>
-      <ion-card-title>Bienvenido a PcaMusic</ion-card-title>
-      <ion-card-subtitle>Tu música, tu estilo</ion-card-subtitle>
     </ion-card-header>
 
     <ion-card-content>
       Descubre las últimas tendencias musicales, encuentra nuevos artistas y disfruta de tus canciones favoritas. 
       Explora nuestras listas de reproducción curadas y deja que la música te lleve en un viaje único.
 
-          <ion-button (click)="toggleTheme()" fill="clear">
-            {{isDarkMode() ? '☀️' : '🌑'}}
-          </ion-button>
+      <ion-button (click)="toggleTheme()" fill="clear">
+        <ng-icon [name]="isDarkMode() ? 'feather-sun' : 'feather-moon'"></ng-icon>
+      </ion-button>
     </ion-card-content>
   </ion-card>
 
