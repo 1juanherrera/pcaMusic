@@ -3,20 +3,29 @@
     <ion-title>Intro</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="toggleTheme()" fill="clear">
-        {{isDarkMode() ? '☀️' : '🌑'}}
+        <ng-icon [name]="isDarkMode() ? 'feather-sun' : 'feather-moon'"></ng-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="intro-content ion-padding">
-  <div class="intro-container">
-    <ion-title size="large" class="intro-title">Soy intro</ion-title>
-    <p class="intro-desc">
-      Esta página solo debería aparecer la primera vez que abres la app.<br>
-      Al pulsar el botón, se guarda en el storage que ya viste la intro.<br>
-      Si vuelves a abrir la app, deberías ir directo al home.
-    </p>
-    <ion-button expand="block" class="intro-btn" (click)="goBack()">Volver al home</ion-button>
-  </div>
+  <!-- 4 Slides dinámicos -->
+  <swiper-container
+    pagination="true"
+    loop="true"
+    slides-per-view="1"
+    autoplay="true"
+    class="ion-margin-bottom">
+    <swiper-slide *ngFor="let slide of introSlides; let i = index" [class.destacado]="slide.destacado">
+      <div class="slide-content ion-text-center ion-padding">
+        <h2 class="ion-text-uppercase ion-margin-bottom">{{ slide.titulo }}</h2>
+        <img *ngIf="slide.imagen" [src]="slide.imagen" alt="{{ slide.titulo }}" class="ion-margin-bottom" style="max-width: 220px; border-radius: 12px;" />
+        <p class="ion-margin-bottom">{{ slide.descripcion }}</p>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+
+  <!-- Botón para ir al home -->
+  <ion-button expand="block" class="intro-btn ion-margin-top" (click)="goBack()">Ir al home</ion-button>
 </ion-content>

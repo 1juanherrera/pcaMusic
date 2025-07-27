@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+      <ion-buttons slot="end">
+      <ion-button (click)="toggleTheme()" fill="clear">
+        <ng-icon [name]="isDarkMode() ? 'feather-sun' : 'feather-moon'"></ng-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <figure class="profile-default-image ion-text-center">
+    <p>Ingresa tus datos</p>
+    <img class="" src="../../assets/images/user.png" alt="">
+  </figure>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+    <ion-item>
+      <ion-input type="email" label="Email" labelPlacement="stacked" placeholder="Ingresa tu email" formControlName="email"></ion-input>
+    </ion-item>
+    <div>
+      <ng-container *ngFor="let validation of validation_messages.email">
+        <div class="validation-errors" *ngIf="(loginForm.get('email')?.hasError(validation.type) && loginForm.get('email')?.dirty)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <ion-item>
+      <ion-input type="password" label="Contraseña" labelPlacement="stacked" placeholder="Ingresa tu contraseña" formControlName="password"></ion-input>
+    </ion-item>
+    <div>
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <div class="validation-errors" *ngIf="(loginForm.get('password')?.hasError(validation.type) && loginForm.get('password')?.dirty)">
+          {{ validation.message }}
+        </div>
+      </ng-container>
+    </div>
+    <ion-button expand="block" class="ion-margin-top" type="submit" color="success" [disabled]="!loginForm.valid">
+      Iniciar sesión
+    </ion-button>
+  </form>
+</ion-content>

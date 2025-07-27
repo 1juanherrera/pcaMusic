@@ -5,3 +5,15 @@
     text-align: center;
     width: 100%;
 }
+.intro-content {
+    --background: var(--background-color);
+    color: var(--text-color-primary);
+}
+.intro-content ion-title {
+    color: var(--text-color-primary);
+}
+ng-icon {
+  width: 24px;
+  height: 24px;
+  color: white;
+}

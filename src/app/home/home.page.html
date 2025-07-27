@@ -1,8 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      PcaMusic
+       <img class="logo-music" src="../../assets/images/logoPcaMusic.png" alt="pcaMusic" />
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="toggleTheme()" fill="clear">
+        <ng-icon [name]="isDarkMode() ? 'feather-sun' : 'feather-moon'"></ng-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -11,14 +16,15 @@
   <ion-card class="welcome-card">
     <ion-card-header>
     </ion-card-header>
-
+    <ion-card-title class="ion-text-center">
+      Bienvenido a pcaMusic
+    </ion-card-title>
+    <ion-card-subtitle class="ion-text-center">
+      Tu destino para descubrir música nueva y emocionante
+    </ion-card-subtitle>
     <ion-card-content>
       Descubre las últimas tendencias musicales, encuentra nuevos artistas y disfruta de tus canciones favoritas. 
       Explora nuestras listas de reproducción curadas y deja que la música te lleve en un viaje único.
-
-      <ion-button (click)="toggleTheme()" fill="clear">
-        <ng-icon [name]="isDarkMode() ? 'feather-sun' : 'feather-moon'"></ng-icon>
-      </ion-button>
     </ion-card-content>
   </ion-card>
 
