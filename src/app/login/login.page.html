@@ -15,7 +15,7 @@
     <img class="" src="../../assets/images/user.png" alt="">
   </figure>
 
-  <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
+  <form [formGroup]="loginForm" (ngSubmit)="loginUser(loginForm.value)">
     <ion-item>
       <ion-input type="email" label="Email" labelPlacement="stacked" placeholder="Ingresa tu email" formControlName="email"></ion-input>
     </ion-item>
@@ -40,4 +40,5 @@
       Iniciar sesión
     </ion-button>
   </form>
+  {{ errorMessage }}
 </ion-content>

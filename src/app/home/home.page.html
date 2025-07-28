@@ -7,6 +7,9 @@
       <ion-button (click)="toggleTheme()" fill="clear">
         <ng-icon [name]="isDarkMode() ? 'feather-sun' : 'feather-moon'"></ng-icon>
       </ion-button>
+      <ion-button (click)="logout()" color="danger" fill="solid">
+        <ng-icon class="logout" name="feather-log-out"></ng-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

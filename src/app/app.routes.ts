@@ -1,11 +1,12 @@
 import { Routes } from '@angular/router';
 import { IntroGuard } from './guards/intro.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () => import('./home/home.page').then((m) => m.HomePage),
-    canActivate: [IntroGuard],
+    canActivate: [IntroGuard, AuthGuard],
   },
   {
     path: '',

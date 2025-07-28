@@ -103,6 +103,13 @@ export class HomePage implements OnInit {
     console.log('Datos simulados cargados:', data);
   }
 
+  async logout() {
+    if (confirm('¿Seguro que deseas cerrar sesión?')) {
+      await this.storageService.remove('login');
+      this.router.navigateByUrl('/login', { replaceUrl: true });
+    }
+  }
+
   obtenerDatosSimulados() {
     return new Promise((resolve) => {
       setTimeout(() => {
