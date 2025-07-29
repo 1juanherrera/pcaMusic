@@ -39,6 +39,7 @@
     <ion-button expand="block" class="ion-margin-top" type="submit" color="success" [disabled]="!loginForm.valid">
       Iniciar sesión
     </ion-button>
+    <ion-button expand="block" fill="clear" (click)="goToRegister()">¿No tienes cuenta? Regístrate</ion-button>
   </form>
   {{ errorMessage }}
 </ion-content>

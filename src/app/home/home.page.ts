@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { StorageService } from '../services/storage.service';
 import { Router } from '@angular/router';
 import { NgIcon, provideIcons } from '@ng-icons/core';
-import { featherSun, featherMoon } from '@ng-icons/feather-icons';
+import { featherSun, featherMoon, featherLogOut } from '@ng-icons/feather-icons';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +12,7 @@ import { featherSun, featherMoon } from '@ng-icons/feather-icons';
   styleUrls: ['home.page.scss'],
   imports: [IonicModule, CommonModule, NgIcon],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  viewProviders: [provideIcons({ featherSun, featherMoon })]
+  viewProviders: [provideIcons({ featherSun, featherMoon, featherLogOut })]
 })
 export class HomePage implements OnInit {
 

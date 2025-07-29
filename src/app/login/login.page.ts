@@ -61,6 +61,8 @@ export class LoginPage implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
     await this.themeService.loadTheme();
+    // Limpiar login al iniciar la pantalla de login
+    await this.storageService.remove('login');
   }
 
   async loginUser(value: any) {
@@ -68,7 +70,7 @@ export class LoginPage implements OnInit {
       await this.authService.loginUser(value);
       this.errorMessage = "";
       await this.storageService.set('login', true);
-      this.navCtrl.navigateForward('/home');
+      this.navCtrl.navigateForward('/menu/home');
     } catch (err) {
       this.errorMessage = typeof err === 'string' ? err : (err && typeof err === 'object' && 'message' in err ? (err as any).message : String(err) || 'Error desconocido');
     }
@@ -80,5 +82,8 @@ export class LoginPage implements OnInit {
 
   isDarkMode(): boolean {
     return this.themeService.isDarkMode();
+  }
+    goToRegister() {
+    this.router.navigate(['/register']);
   }
 }

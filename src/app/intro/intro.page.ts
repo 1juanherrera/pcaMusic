@@ -61,7 +61,7 @@ export class IntroPage implements OnInit {
     console.log('Navigating back to home');
     await this.storageService.set('introSeen', true);
     this.introSeen = true;
-    this.router.navigateByUrl('/home', { replaceUrl: true });
+    this.router.navigateByUrl('/menu/home', { replaceUrl: true });
   }
 
   toggleTheme() {

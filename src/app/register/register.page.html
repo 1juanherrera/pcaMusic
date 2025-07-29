@@ -1,0 +1,46 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="register-center-wrapper">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-input label="Nombre" labelPlacement="stacked" formControlName="nombre" placeholder="Nombre"></ion-input>
+    </ion-item>
+    <div *ngIf="registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched" class="validation-errors">
+      <span *ngIf="registerForm.get('nombre')?.hasError('required')">El nombre es obligatorio.</span>
+    </div>
+
+    <ion-item>
+      <ion-input label="Apellido" labelPlacement="stacked" formControlName="apellido" placeholder="Apellido"></ion-input>
+    </ion-item>
+    <div *ngIf="registerForm.get('apellido')?.invalid && registerForm.get('apellido')?.touched" class="validation-errors">
+      <span *ngIf="registerForm.get('apellido')?.hasError('required')">El apellido es obligatorio.</span>
+    </div>
+
+    <ion-item>
+      <ion-input type="email" label="Email" labelPlacement="stacked" formControlName="email" placeholder="Email"></ion-input>
+    </ion-item>
+    <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="validation-errors">
+      <span *ngIf="registerForm.get('email')?.hasError('required')">El email es obligatorio.</span>
+      <span *ngIf="registerForm.get('email')?.hasError('email')">Email no válido.</span>
+    </div>
+
+    <ion-item>
+      <ion-input type="password" label="Contraseña" labelPlacement="stacked" formControlName="password" placeholder="Contraseña"></ion-input>
+    </ion-item>
+    <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="validation-errors">
+      <span *ngIf="registerForm.get('password')?.hasError('required')">La contraseña es obligatoria.</span>
+      <span *ngIf="registerForm.get('password')?.hasError('minlength')">Mínimo 6 caracteres.</span>
+    </div>
+
+    <ion-button expand="block" type="submit" color="success" [disabled]="!registerForm.valid">Registrarse</ion-button>
+    <ion-button expand="block" fill="clear" (click)="goToLogin()">Volver a login</ion-button>
+    <div *ngIf="errorMessage" class="validation-errors">{{ errorMessage }}</div>
+    </form>
+  </div>
+</ion-content>

@@ -1,50 +1,53 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="toggleTheme()" fill="clear">
+        <ng-icon [name]="isDarkMode() ? 'feather-sun' : 'feather-moon'"></ng-icon>
+      </ion-button>
+    </ion-buttons>
     <ion-title>
        <img class="logo-music" src="../../assets/images/logoPcaMusic.png" alt="pcaMusic" />
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="toggleTheme()" fill="clear">
-        <ng-icon [name]="isDarkMode() ? 'feather-sun' : 'feather-moon'"></ng-icon>
-      </ion-button>
-      <ion-button (click)="logout()" color="danger" fill="solid">
-        <ng-icon class="logout" name="feather-log-out"></ng-icon>
+      <ion-button (click)="logout()" color="transparent" fill="solid">
+        <ng-icon class="logout-icon" name="featherLogOut"></ng-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding home-content">
+  <div class="home-center">
     <!-- Tarjeta de bienvenida con estilos adaptativos -->
-  <ion-card class="welcome-card">
-    <ion-card-header>
-    </ion-card-header>
-    <ion-card-title class="ion-text-center">
-      Bienvenido a pcaMusic
-    </ion-card-title>
-    <ion-card-subtitle class="ion-text-center">
-      Tu destino para descubrir música nueva y emocionante
-    </ion-card-subtitle>
-    <ion-card-content>
-      Descubre las últimas tendencias musicales, encuentra nuevos artistas y disfruta de tus canciones favoritas. 
-      Explora nuestras listas de reproducción curadas y deja que la música te lleve en un viaje único.
-    </ion-card-content>
-  </ion-card>
+    <ion-card class="welcome-card">
+      <ion-card-header></ion-card-header>
+      <ion-card-title class="ion-text-center">
+        Bienvenido a pcaMusic
+      </ion-card-title>
+      <ion-card-subtitle class="ion-text-center">
+        Tu destino para descubrir música nueva y emocionante
+      </ion-card-subtitle>
+      <ion-card-content>
+        Descubre las últimas tendencias musicales, encuentra nuevos artistas y disfruta de tus canciones favoritas. 
+        Explora nuestras listas de reproducción curadas y deja que la música te lleve en un viaje único.
+      </ion-card-content>
+    </ion-card>
 
-  <swiper-container
-    pagination="true"
-    loop="true"
-    slides-per-view="1"
-    autoplay="true">
-  
-    <swiper-slide *ngFor="let genre of genres; let i = index" [style.background]="getGradient(i)">
-      <div class="slide-content">
-        <h2>{{ genre.title }}</h2>
-        <img [src]="genre.image" alt="{{ genre.title }}" />
-        <p>{{genre.description}}</p>
-      </div>
-    </swiper-slide>
-
-  </swiper-container>
-  <ion-button expand="block" class="ion-intro" (click)="goIntro()">Ir a la intro</ion-button>
+    <div class="swiper-wrapper-fix">
+      <swiper-container
+        pagination="true"
+        loop="true"
+        slides-per-view="1"
+        autoplay="true">
+        <swiper-slide *ngFor="let genre of genres; let i = index" [style.background]="getGradient(i)">
+          <div class="slide-content">
+            <h2>{{ genre.title }}</h2>
+            <img [src]="genre.image" alt="{{ genre.title }}" />
+            <p>{{genre.description}}</p>
+          </div>
+        </swiper-slide>
+      </swiper-container>
+    </div>
+    <ion-button expand="block" class="ion-intro" (click)="goIntro()">Ir a la intro</ion-button>
+  </div>
 </ion-content>
