@@ -12,7 +12,7 @@ import { featherSun, featherMoon, featherLogOut } from '@ng-icons/feather-icons'
   styleUrls: ['home.page.scss'],
   imports: [IonicModule, CommonModule, NgIcon],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  viewProviders: [provideIcons({ featherSun, featherMoon, featherLogOut })]
+  viewProviders: [provideIcons({ featherSun, featherMoon })]
 })
 export class HomePage implements OnInit {
 
@@ -50,7 +50,6 @@ export class HomePage implements OnInit {
 
   async ngOnInit() {
     await this.loadStorageData();
-    this.simularCargaDatos();
   }
 
   async toggleTheme() {
@@ -96,26 +95,6 @@ export class HomePage implements OnInit {
   goIntro() {
     console.log('Navigating to intro');
     this.router.navigateByUrl('/intro', { replaceUrl: true });
-  }
-
-  async simularCargaDatos() { 
-    const data = await this.obtenerDatosSimulados(); 
-    console.log('Datos simulados cargados:', data);
-  }
-
-  async logout() {
-    if (confirm('¿Seguro que deseas cerrar sesión?')) {
-      await this.storageService.remove('login');
-      this.router.navigateByUrl('/login', { replaceUrl: true });
-    }
-  }
-
-  obtenerDatosSimulados() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(['Rock', 'Pop', 'Jazz', 'Clásica']);
-      }, 1500);
-    });
   }
 }
 
