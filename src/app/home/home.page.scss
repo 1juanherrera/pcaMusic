@@ -1,3 +1,53 @@
+.footer-fake {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  background: linear-gradient(90deg, #232526 0%, #28292a 100%);
+  color: #fff;
+  text-align: center;
+  padding: 18px 0 8px 0;
+  font-size: 1rem;
+  z-index: 100;
+  box-shadow: 0 -2px 16px rgba(0,0,0,0.12);
+  border-top: 1.5px solid #222;
+  letter-spacing: 0.5px;
+}
+
+
+.footer-fake ion-grid {
+  margin-bottom: 4px;
+}
+
+.footer-fake .ion-row {
+  align-items: center;
+}
+
+.footer-fake .ion-col:first-child {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 12px;
+}
+
+.footer-fake .name-song {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.footer-fake ion-icon {
+  font-size: 1.5rem;
+  color: #ff4081;
+}
+
+.footer-fake ion-progress-bar {
+  --background: #444;
+  --progress-background: #ff4081;
+  height: 6px;
+  border-radius: 3px;
+  margin-bottom: 6px;
+}
 .home-content {
   display: flex;
   flex-direction: column;
@@ -20,7 +70,7 @@
 .welcome-card {
   width: 100%;
   max-width: 420px;
-  margin: 24px auto 16px auto;
+  margin: 0 auto 16px auto;
   background: var(--card-background);
   color: gray;
   box-shadow: 0 4px 12px var(--shadow-color);
@@ -45,7 +95,7 @@ swiper-slide {
 
 .slide-content {
   text-align: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 .slide-content img {
@@ -74,7 +124,6 @@ swiper-slide {
 .ion-intro {
   --color: var(--text-color-primary);
   --background: var(--background-button);
-  margin-bottom: 24px;
 }
 
 ng-icon {
@@ -117,4 +166,10 @@ ion-menu-button {
   width: 2.5rem;
   height: 2.5rem;
   vertical-align: middle;
+}
+
+.name-song {
+  color: var(--text-color-primary);
+  font-weight: bold;
+  font-size: 0.8rem;
 }
